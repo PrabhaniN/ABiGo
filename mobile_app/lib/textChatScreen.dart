@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'chatMessage.dart';
+// import 'theme.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   final List<ChatMessage> _messages = <ChatMessage>[];
+  final TextEditingController _textEditingController = new TextEditingController();
   bool _isComposing =false;
   @override
   Widget build(BuildContext context) {
@@ -15,6 +18,7 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         // leading: _buildStack(),
         title: Text('Name'),
+        // elevation: Theme.of(context).platform ==TargetPlatform.android ? 4.0 : 0.0,
       ),
       body: new Container(
         child: new Column(
@@ -29,13 +33,22 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             Divider(height: 1.0),
             Container(
-              // decoration: BoxDecoration(
-                // color: Theme.of(context).cardColor,
-              // ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+              ),
               child: _buildTextComposer(),
             ),
           ],
         ),
+        decoration: Theme.of(context).platform == TargetPlatform.iOS
+        ? new BoxDecoration(
+          border: new Border(
+            top: BorderSide(
+              color: Colors.grey[200],
+            )
+          )
+        ) 
+        : null
       ),
     );
   }
@@ -46,6 +59,7 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 8.0),
+        // height: 10.0,
         child: Row(
           children: <Widget>[
             Flexible(
@@ -56,23 +70,54 @@ class _ChatScreenState extends State<ChatScreen> {
                     _isComposing = text.length > 0;
                   });
                 },
+                onSubmitted: _handleSubmitted,
                 decoration: InputDecoration.collapsed(
                   hintText: 'Send Message'
                 ),
               ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 4.0),
+              child: IconButton(
+                icon: Icon(Icons.send),
+                onPressed: _isComposing
+                ? () => _handleSubmitted(_textEditingController.text)
+                :null,
+              ),
+              // child: Theme.of(context).platform == TargetPlatform.iOS
+              // ? new CupertinoButton(
+                // child: Text('Send'),
+                // onPressed: _isComposing
+                // ? () => _handleSubmitted(_textEditingController.text)
+                // : null,
+              // ):
+              // new IconButton(
+                // icon: new Icon(Icons.send),
+                // onPressed: _isComposing
+                // ? () => _handleSubmitted(_textEditingController.text)
+                // : null,
+              // ),
             ),
           ],
         ),
       ),
     );
   }
-  // Widget _buildStack() => Stack(
-    // alignment: const Alignment(10.0, 10.0),
-    // children: [
-      // CircleAvatar(
-        // backgroundImage: AssetImage('images/panda.jpeg'),
-        // radius: 25.0, 
-      // ),
-    // ],
-  // );
+  void _handleSubmitted(String text) {
+    _textEditingController.clear();
+    setState(() {
+      _isComposing =false;
+    });
+    ChatMessage message = new ChatMessage(
+      text: text,
+      animationController: new AnimationController(
+        duration: new Duration(milliseconds: 400),
+        vsync: this,
+      ),
+    );
+    setState(() {
+      _messages.insert(0, message);
+    });
+    message.animationController.forward();
+  }
 }
