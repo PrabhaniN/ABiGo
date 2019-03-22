@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'chat_page.dart';
+import 'chatPage.dart';
 
 class TextLoginPage extends StatefulWidget {
   @override
