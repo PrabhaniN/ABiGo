@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'textChatScreen.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -12,9 +13,8 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         title: Text('Bla bla'),
       ),
-      body: GridView.count(
-        crossAxisCount: 1,
-        children: _buildCards(5),
+      body: ListView(
+        children: _buildListCards(10),
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add),
@@ -25,21 +25,45 @@ class _ChatPageState extends State<ChatPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
-  List<Card> _buildCards(int count) {
-    List<Card> cards = List.generate(
+  Widget _buildStack() => Stack(
+    // alignment: const Alignment(10.0, 10.0),
+    children: [
+      CircleAvatar(
+        backgroundImage: AssetImage('images/panda.jpeg'),
+        radius: 40.0, 
+      ),
+    ],
+  );
+  Widget _buildCard() => SizedBox(
+    height: 100.0,
+    child: Card(
+      child: ListTile(
+        onTap: () {
+          Navigator.push(
+            context, 
+            MaterialPageRoute(builder: (context) => ChatScreen())
+          );
+        },
+        title: Text(
+          'Name',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        subtitle: Text('Message content'),
+        leading: _buildStack(),
+        contentPadding: EdgeInsets.fromLTRB(5.0, 6.0, 5.0, 2.0),
+      ),
+    ),
+  );
+  List<Card> _buildListCards(int count){
+    List<Card> card =List.generate(
       count, 
       (int index) => Card(
-        child: Row(
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 18.0/11.0,
-              child: Image.asset('images/panda.jpeg'),
-              
-            ),
-          ],
-        ),
-      ),
+        child: _buildCard(),
+      )
     );
-    return cards;
+    return card;
   }
 }
