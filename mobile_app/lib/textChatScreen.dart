@@ -22,7 +22,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         // leading: _buildStack(),
-        title: Text('Name'),
+        title: Text('Samanthi'),
         backgroundColor: Colors.blue[900],
         // elevation: Theme.of(context).platform ==TargetPlatform.android ? 4.0 : 0.0,
       ),

@@ -21,7 +21,7 @@ class _ChatPageState extends State<ChatPage> {
       backgroundColor: Colors.blue[900],
       ),
       body: ListView(
-        children: _buildListCards(10),
+        children: _buildListCards(2),
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add),
@@ -53,14 +53,14 @@ class _ChatPageState extends State<ChatPage> {
           );
         },
         title: Text(
-          'Name',
+          'Amal',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
             fontFamily: 'Roboto'
           ),
         ),
-        subtitle: Text('Message content'),
+        subtitle: Text('Yes I did'),
         leading: _buildStack(),
         contentPadding: EdgeInsets.fromLTRB(5.0, 6.0, 5.0, 2.0),
       ),

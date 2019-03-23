@@ -45,4 +45,4 @@ class ChatMessage extends StatelessWidget {
     return sizeTransition;
   }
 }
-const String _name = "Your Name";
+const String _name = "Samanthi";
