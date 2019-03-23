@@ -13,11 +13,17 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   final TextEditingController _textEditingController = new TextEditingController();
   bool _isComposing =false;
   @override
+  // void dispose(){
+    // for (ChatMessage message in _messages)
+      // message.animationController.dispose();
+    // super.dispose();
+  // }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // leading: _buildStack(),
         title: Text('Name'),
+        backgroundColor: Colors.blue[900],
         // elevation: Theme.of(context).platform ==TargetPlatform.android ? 4.0 : 0.0,
       ),
       body: new Container(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'chatPage.dart';
+import 'home.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -169,7 +169,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 onPressed: (){
                   if(_formKey.currentState.validate()){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                   }
                 },
               ),
