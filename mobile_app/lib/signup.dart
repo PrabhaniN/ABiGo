@@ -170,7 +170,8 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 onPressed: (){
                   if(_formKey.currentState.validate()){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                    Navigator.pop(context);
                   }
                 },
               ),

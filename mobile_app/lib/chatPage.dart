@@ -11,8 +11,9 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AbiGo', 
-        style: TextStyle(
+        title: Text(
+          'AbiGo', 
+          style: TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
           fontFamily: 'Roboto'
@@ -21,7 +22,7 @@ class _ChatPageState extends State<ChatPage> {
       backgroundColor: Colors.blue[900],
       ),
       body: ListView(
-        children: _buildListCards(2),
+        children: _buildListCards(1),
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add),
@@ -53,7 +54,7 @@ class _ChatPageState extends State<ChatPage> {
           );
         },
         title: Text(
-          'Amal',
+          'Samanthi',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
