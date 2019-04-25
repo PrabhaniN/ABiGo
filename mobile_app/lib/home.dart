@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'textLogin.dart';
 import 'signup.dart';
+import 'signChatScreen.dart';
 
 class HomePage extends StatefulWidget{
   @override
@@ -61,7 +62,7 @@ class _HomePageState extends State<HomePage>{
                       'Login',
                       style: TextStyle(
                         fontSize: 20,
-                        fontFamily: 'Roboto',
+                        // fontFamily: 'Roboto',
                       ),
                     ),
                     onPressed: (){
@@ -79,7 +80,7 @@ class _HomePageState extends State<HomePage>{
                     onPressed: () {
                       Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => HomePage())
+                        MaterialPageRoute(builder: (context) => SignChatScreen())
                       );
                     },
                   ),

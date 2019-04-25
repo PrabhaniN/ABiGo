@@ -12,11 +12,11 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'AbiGo', 
+          'ABiGo', 
           style: TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
-          fontFamily: 'Roboto'
+          // fontFamily: 'Roboto'
         ),
       ),
       backgroundColor: Colors.blue[900],
@@ -58,7 +58,7 @@ class _ChatPageState extends State<ChatPage> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
-            fontFamily: 'Roboto'
+            // fontFamily: 'Roboto'
           ),
         ),
         subtitle: Text('Yes I did'),

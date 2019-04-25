@@ -24,160 +24,113 @@ class _SignupPageState extends State<SignupPage> {
         backgroundColor: Colors.blue[900],
         title: Text('Sign-Up'),
       ),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 10.0,
-            ),
-            TextFormField(
-              controller: _firstnameController,
-              validator: (value) {
-                if(value.isEmpty) {
-                  return 'Enter a valid name';
-                }
-              },
-              decoration: InputDecoration(
-                hintText: 'Enter your First name',
-                filled: true,
-                contentPadding: EdgeInsets.all(10.0)
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-
-            TextFormField(
-              controller: _lastnameController,
-              validator: (value) {
-                if(value.isEmpty) {
-                  return 'Enter a valid name';
-                }
-              },
-              decoration: InputDecoration(
-                hintText: 'Enter your Last name',
-                filled: true,
-                contentPadding: EdgeInsets.all(10.0)
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-
-            TextFormField(
-              controller: _usernameController,
-              validator: (value) {
-                if(value.isEmpty) {
-                  return 'Enter a valid username';
-                }
-              },
-              decoration: InputDecoration(
-                hintText: 'Enter your username',
-                filled: true,
-                contentPadding: EdgeInsets.all(10.0)
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            TextFormField(
-              controller: _phonenumberController,
-              validator: (value) {
-                if(value.isEmpty) {
-                  return 'Enter a valid phone number';
-                }
-              },
-              decoration: InputDecoration(
-                hintText: 'Enter Guardian\'s phone',
-                filled: true,
-                contentPadding: EdgeInsets.all(10.0)
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 10.0,
-                    child: Text('Disability'),
-                  ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  new Row(
-                    children: <Widget>[
-                      new Checkbox(
-                        value: isCheckedbBlind,
-                        onChanged: (value) {
-                          setState(() {
-                            isCheckedbBlind = value;
-                          });
-                        },
-                      ),
-                      new Text('Blind'),
-                      SizedBox(
-                        width: 60.0,
-                      ),
-
-                      new Checkbox(
-                        value: isCheckedMute,
-                        onChanged: (value) {
-                          setState(() {
-                            isCheckedMute = value;
-                          });
-                        },
-                      ),
-                      new Text('Mute'),
-                      SizedBox(
-                        width: 60.0,
-                      ),
-                      
-                      new Checkbox(
-                        value: isCheckedDeaf,
-                        onChanged: (value) {
-                          setState(() {
-                            isCheckedDeaf = value;
-                          });
-                        },
-                      ),
-                      new Text('Deaf'),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            // SizedBox(
-              // height: 10,
-            // ),
-            ButtonTheme(
-              height: 35.0,
-              minWidth: 105.0,
-              buttonColor: Colors.blue[900],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0)
-              ),
-              child: RaisedButton(
-                textColor: Colors.white,
-                child: Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'Roboto'
+      body: ListView(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              ListTile(
+                title: TextFormField(
+                  controller: _firstnameController,
+                  validator: (value){
+                    if(value.isEmpty){
+                      return 'Field cannot be empty';
+                    }
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Enter your first name',
+                    filled: true,
+                    labelText: 'First Name',
+                    contentPadding: EdgeInsets.all(15.0),
                   ),
                 ),
-                onPressed: (){
-                  if(_formKey.currentState.validate()){
-                    // Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-                    Navigator.pop(context);
-                  }
-                },
               ),
-            ),
-          ],
-        ),
+              ListTile(
+                title: TextFormField(
+                  controller: _lastnameController,
+                  validator: (value){
+                    if(value.isEmpty){
+                      return 'Field cannot be empty';
+                    }
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Enter your last name',
+                    filled: true,
+                    labelText: 'Last Name',
+                    contentPadding: EdgeInsets.all(15.0),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: TextFormField(
+                  controller: _usernameController,
+                  validator: (value){
+                    if(value.isEmpty){
+                      return 'Field cannot be empty';
+                    }
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Enter a Username',
+                    filled: true,
+                    labelText: 'Username',
+                    contentPadding: EdgeInsets.all(15.0),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: TextFormField(
+                  controller: _phonenumberController,
+                  validator: (value){
+                    if(value.isEmpty){
+                      return 'Field cannot be empty';
+                    }
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Enter Guardian\'s Phone Number',
+                    filled: true,
+                    labelText: 'Guardian\'s Phone Number',
+                    contentPadding: EdgeInsets.all(15.0),
+                  ),
+                ),
+                // dense: true,
+              ),
+              ListTile(
+                title: Text('Disability'),
+              ),
+              ListTile(
+                // title: DropdownMenuItem(
+                  // 
+                // ),
+                // title: Column(
+                  // children: <Widget>[
+                    // Text('data')
+                  //   Expanded(
+                  //     child: CheckboxListTile(
+                  //       value: isCheckedbBlind,
+                  //       onChanged: (value) {
+                  //         setState(() {
+                  //           isCheckedbBlind = value;
+                  //         });
+                  //       },
+                  //       title: Text('Blind'),
+                  //     ),
+                  //   ),
+                  //   Expanded(
+                  //     child: Checkbox(
+                  //       value: isCheckedDeaf,
+                  //       onChanged: (value) {
+                  //         setState(() {
+                  //           isCheckedbBlind = value;
+                  //         });
+                  //       },
+                  //     ),
+                  //   ),
+                  // ],
+                // ),X
+                // dense: false,
+              ),
+            ],
+          ),
+        ],
       ), 
     );
   }
