@@ -10,11 +10,14 @@ Primary goal is to provide means of enhancing their lifestyles and making their 
 
 This product aims to bridge this gap of communication that exists by an end to end encrypted communicating application that is available in many languages. 
 
-## Special Features
+## Features
 
 * End-to-end encrypted communication facility.
-* Available in many languages
 * Group conversations facility
+
+### Special Features
+
+* Available in many languages
 * Built-in self-learning assistant to guide the user.
 
   During registration, the user would be able to define whether he is deaf, dumb or blind and using this categorization the application would be able to guide the user throughout the process thereafter.
@@ -31,3 +34,15 @@ Though this is mainly focused on the differently-abled people, even normal peopl
 User interaction
 
 > Sign language will be available as images that are different from a country to country. By crowdsourcing, contributors can add images according to their country. Meaning of the sign will be converted into text and to speech.
+
+<!-- ## Created By -->
+<!--  -->
+<!-- Prabhani Nanayakkara -->
+<!--  -->
+  <!-- GitHub - [PrabhaniN](https://paperhive.org/) -->
+<!--  -->
+  <!-- Twitter - [@PrabhaniNanaya1](https://twitter.com/PrabhaniNanaya1) -->
+<!--  -->
+## License
+
+Apache License 2.0. For Details: [LICENSE](https://github.com/PrabhaniN/ABiGo/blob/master/LICENSE)
