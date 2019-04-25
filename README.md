@@ -1,10 +1,8 @@
 # Abigo
 
-![](mobile_app/images/abigo logo.png)
+![logo Image](mobile_app/images/abigo_logo.png)
 
 ## About
-
----------------------------
 
 This product is a communicating tool that aims to provide a better way of living for the differently abled deaf, dumb and blind community. At present, there is a considerable amount of such differently abled people in varying ages and most of them find it inconvenient to communicate with others unless they have help with them at all times.
 
@@ -13,8 +11,6 @@ Primary goal is to provide means of enhancing their lifestyles and making their 
 This product aims to bridge this gap of communication that exists by an end to end encrypted communicating application that is available in many languages. 
 
 ## Special Features
-
----------------------------
 
 * End-to-end encrypted communication facility.
 * Available in many languages
@@ -27,8 +23,6 @@ This product aims to bridge this gap of communication that exists by an end to e
 * Translate the conversation that the required language by the user.
 
 ## Target Users
-
----------------------------
 
 * Deaf, Dumb and Blind people - Mainly focused
 * Any person - Additionally
