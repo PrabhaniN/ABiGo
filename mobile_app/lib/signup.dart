@@ -26,6 +26,9 @@ class _SignupPageState extends State<SignupPage> {
       ),
       body: ListView(
         children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top: 50.0),
+          ),
           Column(
             children: <Widget>[
               ListTile(
