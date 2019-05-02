@@ -7,23 +7,29 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  String _pageController = 'chatPage';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'ABiGo', 
+          'Chats', 
           style: TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
           // fontFamily: 'Roboto'
+          ),
         ),
+        backgroundColor: Colors.blue[900],
       ),
-      backgroundColor: Colors.blue[900],
-      ),
+
+      drawer: _drawer(),
+      
       body: ListView(
         children: _buildListCards(1),
       ),
+
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add),
         backgroundColor: Colors.blue[900],
@@ -34,6 +40,7 @@ class _ChatPageState extends State<ChatPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
+
   Widget _buildStack() => Stack(
     // alignment: const Alignment(10.0, 10.0),
     children: [
@@ -43,6 +50,7 @@ class _ChatPageState extends State<ChatPage> {
       ),
     ],
   );
+
   Widget _buildCard() => SizedBox(
     height: 100.0,
     child: Card(
@@ -67,6 +75,7 @@ class _ChatPageState extends State<ChatPage> {
       ),
     ),
   );
+  
   List<Card> _buildListCards(int count){
     List<Card> card =List.generate(
       count, 
@@ -76,4 +85,45 @@ class _ChatPageState extends State<ChatPage> {
     );
     return card;
   }
+
+  Widget _drawer() => Drawer(
+    child: ListView(
+      children: <Widget>[
+        DrawerHeader(
+          child: Image(
+            image: AssetImage('images/abigo_logo.png'),
+          ),
+        ),
+
+        ListTile(
+          title: Text('Chats'),
+          onTap: () {
+            if (_pageController != 'chatPage') {
+              Navigator.push(
+              context, 
+              MaterialPageRoute(builder: (context) => ChatPage())
+              );
+            } else {
+              Navigator.pop(context);
+            }
+          },
+        ),
+
+        ListTile(
+          title: Text('asdas'),
+          onTap: () {
+            if (_pageController != 'asdas') {
+              Navigator.push(
+              context, 
+              MaterialPageRoute(builder: (context) => ChatPage())
+              );
+            } else {
+              Navigator.pop(context);
+            }
+          },
+        ),
+
+      ],
+    ),
+  );
 }
