@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:country_pickers/country_pickers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'home.dart';
+import 'chatPage.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -8,14 +9,36 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  final _firstnameController =TextEditingController();
-  final _lastnameController =TextEditingController();
-  final _usernameController =TextEditingController();
-  final _phonenumberController =TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _firstnameController = TextEditingController();
+  final _lastnameController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _phonenumberController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool isCheckedDeaf = false;
   bool isCheckedbBlind = false;
   bool isCheckedMute = false;
+  bool agreed = false;
+  String radioValue = 'Mute';
+
+  void handleRadioValueChanged(String value) {
+    setState(() {
+      radioValue = value;
+    });
+  }
+
+  // Widget _buildDropdownItem(Country country) => Container(
+  // child: Row(
+  // children: <Widget>[
+  // CountryPickerUtils.getDefaultFlagImage(country),
+  // SizedBox(
+  // width: 8.0,
+  // ),
+  // Text("+${country.phoneCode}(${country.isoCode})"),
+  // ],
+  // ),
+  // );
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +56,48 @@ class _SignupPageState extends State<SignupPage> {
             children: <Widget>[
               ListTile(
                 title: TextFormField(
+                  cursorColor: Colors.blue[900],
+                  controller: _emailController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Field cannot be empty';
+                    }
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Enter your email',
+                    labelText: 'Email',
+                    contentPadding: EdgeInsets.all(15.0),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: TextFormField(
+                  cursorColor: Colors.blue[900],
+                  controller: _passwordController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Field cannot be empty';
+                    }
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Enter a password',
+                    labelText: 'Password',
+                    contentPadding: EdgeInsets.all(15.0),
+                  ),
+                  obscureText: true,
+                ),
+              ),
+              ListTile(
+                title: TextFormField(
+                  cursorColor: Colors.blue[900],
                   controller: _firstnameController,
-                  validator: (value){
-                    if(value.isEmpty){
+                  validator: (value) {
+                    if (value.isEmpty) {
                       return 'Field cannot be empty';
                     }
                   },
                   decoration: InputDecoration(
                     hintText: 'Enter your first name',
-                    filled: true,
                     labelText: 'First Name',
                     contentPadding: EdgeInsets.all(15.0),
                   ),
@@ -49,15 +105,15 @@ class _SignupPageState extends State<SignupPage> {
               ),
               ListTile(
                 title: TextFormField(
+                  cursorColor: Colors.blue[900],
                   controller: _lastnameController,
-                  validator: (value){
-                    if(value.isEmpty){
+                  validator: (value) {
+                    if (value.isEmpty) {
                       return 'Field cannot be empty';
                     }
                   },
                   decoration: InputDecoration(
                     hintText: 'Enter your last name',
-                    filled: true,
                     labelText: 'Last Name',
                     contentPadding: EdgeInsets.all(15.0),
                   ),
@@ -66,14 +122,13 @@ class _SignupPageState extends State<SignupPage> {
               ListTile(
                 title: TextFormField(
                   controller: _usernameController,
-                  validator: (value){
-                    if(value.isEmpty){
+                  validator: (value) {
+                    if (value.isEmpty) {
                       return 'Field cannot be empty';
                     }
                   },
                   decoration: InputDecoration(
                     hintText: 'Enter a Username',
-                    filled: true,
                     labelText: 'Username',
                     contentPadding: EdgeInsets.all(15.0),
                   ),
@@ -81,60 +136,105 @@ class _SignupPageState extends State<SignupPage> {
               ),
               ListTile(
                 title: TextFormField(
+                  cursorColor: Colors.blue[900],
                   controller: _phonenumberController,
-                  validator: (value){
-                    if(value.isEmpty){
+                  validator: (value) {
+                    if (value.isEmpty) {
                       return 'Field cannot be empty';
                     }
                   },
                   decoration: InputDecoration(
                     hintText: 'Enter Guardian\'s Phone Number',
-                    filled: true,
                     labelText: 'Guardian\'s Phone Number',
                     contentPadding: EdgeInsets.all(15.0),
                   ),
                 ),
                 // dense: true,
+                // title: CountryPickerDropdown(
+                // initialValue: 'tr',
+                // itemBuilder: _buildDropdownItem,
+                // onValuePicked: (Country country) {
+                // print("${country.name}");
+                // },
+                // ),
               ),
               ListTile(
+                contentPadding: EdgeInsets.only(
+                    left: 30.0), //expantion panel with disabilities
                 title: Text('Disability'),
               ),
               ListTile(
-                // title: DropdownMenuItem(
-                  // 
-                // ),
-                // title: Column(
-                  // children: <Widget>[
-                    // Text('data')
-                  //   Expanded(
-                  //     child: CheckboxListTile(
-                  //       value: isCheckedbBlind,
-                  //       onChanged: (value) {
-                  //         setState(() {
-                  //           isCheckedbBlind = value;
-                  //         });
-                  //       },
-                  //       title: Text('Blind'),
-                  //     ),
-                  //   ),
-                  //   Expanded(
-                  //     child: Checkbox(
-                  //       value: isCheckedDeaf,
-                  //       onChanged: (value) {
-                  //         setState(() {
-                  //           isCheckedbBlind = value;
-                  //         });
-                  //       },
-                  //     ),
-                  //   ),
-                  // ],
-                // ),X
-                // dense: false,
+                title: Row(
+                  children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 15.0),
+                  ),
+                  Radio<String>(
+                    value: 'Mute',
+                    groupValue: radioValue,
+                    onChanged: handleRadioValueChanged,
+                    activeColor: Colors.blue[900],
+                  ),
+                  Text('Mute'),
+                  Radio<String>(
+                    value: 'Deaf',
+                    groupValue: radioValue,
+                    onChanged: handleRadioValueChanged,
+                    activeColor: Colors.blue[900],
+                  ),
+                  Text('Deaf'),
+                  Radio<String>(
+                    value: 'Blind',
+                    groupValue: radioValue,
+                    onChanged: handleRadioValueChanged,
+                    activeColor: Colors.blue[900],
+                  ),
+                  Text('Blind'),
+                  ],
+                )
               ),
+
+              ListTile(
+                title: Row(
+                  children: <Widget>[
+                    Checkbox(
+                      activeColor: Colors.blue[900],
+                      value: agreed,
+                      onChanged: (value) {
+                        setState(() {
+                          agreed = value;
+                        });
+                      },
+                    ),
+                    Text('I agree to the terms and conditions')
+                  ],
+                )
+              ),
+
+              ListTile(
+                title: RaisedButton(
+
+                  color: Colors.blue[900],
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  onPressed: (){
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => ChatPage())
+                    );
+                  },
+                ),
+              )
+
             ],
           ),
         ],
-      ), 
+      ),
     );
   }
 }
