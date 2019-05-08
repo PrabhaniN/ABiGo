@@ -34,4 +34,12 @@ class User {
     this.deaf = data['deaf'];
     this.blind = data['blind'];
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'username': username,
+      // 'icon': icon,
+    };
+  }
 }
