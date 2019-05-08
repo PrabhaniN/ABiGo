@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'textChatScreen.dart';
+import 'package:Abigo/Screens/textChatScreen.dart';
 
 class ChatPage extends StatefulWidget {
   @override

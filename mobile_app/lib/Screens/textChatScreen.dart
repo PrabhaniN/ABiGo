@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'chatMessage.dart';
+import 'package:Abigo/Screens/chatMessage.dart';
+import 'package:Abigo/Screens/chatPage.dart';
+import 'package:Abigo/widgets/drawer.dart';
 // import 'theme.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -26,6 +28,9 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         backgroundColor: Colors.blue[900],
         // elevation: Theme.of(context).platform ==TargetPlatform.android ? 4.0 : 0.0,
       ),
+
+      drawer: CustomDrawer(),
+      
       body: new Container(
         child: new Column(
           children: <Widget>[
