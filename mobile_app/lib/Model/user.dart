@@ -5,7 +5,7 @@ class User {
   String firstName;
   String lastName;
   String username;
-  int phoneNo;
+  String phoneNo;
   bool mute;
   bool deaf;
   bool blind;
@@ -37,8 +37,13 @@ class User {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'fristname' : firstName,
+      'lastName' : lastName,
       'username': username,
+      'phoneNo' : phoneNo,
+      'mute' : mute,
+      'blind' : blind,
+      'deaf' : deaf,
       // 'icon': icon,
     };
   }

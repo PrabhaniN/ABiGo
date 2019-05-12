@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:Abigo/Model/user.dart';
-import 'package:Abigo/Screens/signup.dart';
 import 'package:Abigo/Nav/nav.dart';
 import 'package:Abigo/Utils/auth.dart';
 
@@ -13,8 +11,7 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage>{
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final userCollection = Firestore.instance.collection("user");
   bool isSignInVisible = false;
   bool isLoading = false;
@@ -62,6 +59,7 @@ class _HomePageState extends State<HomePage>{
       )
     );
   }
+  
   _buildSignInButton() {
     if (isSignInVisible) {
       if (isLoading) {
@@ -121,6 +119,6 @@ class _HomePageState extends State<HomePage>{
   }
 
   void _gotoSignupPage(String id) {
-    Nav.of(context).navigateTo(context, "/signup/$id", clearStack: true, replace: true);
+    Nav.of(context).navigateTo(context, 'signup/$id', clearStack: true, replace: true);
   }
 }
