@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Abigo/Bloc/base_bloc.dart';
+import 'package:Abigo/bloc/base_bloc.dart';
 
 class BlocProvider<T extends BaseBloc> extends StatefulWidget {
   final T bloc;

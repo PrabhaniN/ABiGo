@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:Abigo/Screens/chatMessage.dart';
-import 'package:Abigo/Screens/chatPage.dart';
+import 'package:Abigo/screens/chats/chatMessage.dart';
+// import 'package:Abigo/Screens/chats/chatPage.dart';
 import 'package:Abigo/widgets/drawer.dart';
 // import 'theme.dart';
 

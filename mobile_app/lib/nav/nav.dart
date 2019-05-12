@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-import 'package:Abigo/Nav/routes.dart';
+import 'package:Abigo/nav/routes.dart';
 
 class Nav extends InheritedWidget {
   final Router _router;

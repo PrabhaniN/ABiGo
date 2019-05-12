@@ -1,5 +1,5 @@
-import 'package:Abigo/Model/user.dart';
-import 'package:Abigo/Bloc/base_bloc.dart';
+import 'package:Abigo/model/user.dart';
+import 'package:Abigo/bloc/base_bloc.dart';
 
 class SignUpBloc extends BaseBloc {
   Future<Null> signupUser(User user) async {

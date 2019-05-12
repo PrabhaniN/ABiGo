@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 // import 'package:country_pickers/country_pickers.dart';
 // import 'package:Abigo/Screens/chatPage.dart';
-import 'package:Abigo/Screens/signup_bloc.dart';
-import 'package:Abigo/Model/user.dart';
-import 'package:Abigo/Bloc/bloc_provider.dart';
-import 'package:Abigo/Utils/auth.dart';
-import 'package:Abigo/Nav/nav.dart';
+import 'package:Abigo/screens/signup_bloc.dart';
+import 'package:Abigo/model/user.dart';
+import 'package:Abigo/bloc/bloc_provider.dart';
+import 'package:Abigo/utils/auth.dart';
+import 'package:Abigo/nav/nav.dart';
 
 class SignupPage extends StatefulWidget {
   final String id;

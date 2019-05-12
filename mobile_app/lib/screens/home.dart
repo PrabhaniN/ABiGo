@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:Abigo/Model/user.dart';
-import 'package:Abigo/Nav/nav.dart';
-import 'package:Abigo/Utils/auth.dart';
+import 'package:Abigo/model/user.dart';
+import 'package:Abigo/nav/nav.dart';
+import 'package:Abigo/utils/auth.dart';
 
 class HomePage extends StatefulWidget{
   @override

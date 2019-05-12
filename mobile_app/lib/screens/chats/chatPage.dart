@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:Abigo/Screens/textChatScreen.dart';
-import 'package:Abigo/Model/user.dart';
-import 'package:Abigo/Nav/nav.dart';
+import 'package:Abigo/screens/chats/textChatScreen.dart';
+import 'package:Abigo/model/user.dart';
+import 'package:Abigo/nav/nav.dart';
 // import 'package:Abigo/Screens/addChat.dart';
 
 class ChatPage extends StatefulWidget {

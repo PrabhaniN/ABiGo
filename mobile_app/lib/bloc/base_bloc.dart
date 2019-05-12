@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:Abigo/Utils/auth.dart';
+import 'package:Abigo/utils/auth.dart';
 
 class Collections {
   static const String USER = 'user';

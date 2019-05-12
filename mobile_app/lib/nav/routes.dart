@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
-import 'package:Abigo/Screens/signup.dart';
-import 'package:Abigo/Screens/chatPage.dart';
-import 'package:Abigo/Screens/addChat.dart';
+import 'package:Abigo/screens/signup.dart';
+import 'package:Abigo/screens/chats/chatPage.dart';
+import 'package:Abigo/screens/chats/addChat.dart';
 
 class Routes {
 
