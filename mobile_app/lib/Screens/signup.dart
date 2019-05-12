@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:country_pickers/country_pickers.dart';
-import 'package:Abigo/Screens/chatPage.dart';
+// import 'package:Abigo/Screens/chatPage.dart';
 import 'package:Abigo/Screens/signup_bloc.dart';
 import 'package:Abigo/Model/user.dart';
 import 'package:Abigo/Bloc/bloc_provider.dart';
@@ -34,7 +34,7 @@ class _SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   User _user;
 
-  _SignupPageState(String id) {
+  _SignupPageState(String id) { 
     this._user = User(id);
   }
 

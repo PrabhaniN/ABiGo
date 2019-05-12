@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:Abigo/Screens/textChatScreen.dart';
+import 'package:Abigo/Model/user.dart';
+import 'package:Abigo/Nav/nav.dart';
+// import 'package:Abigo/Screens/addChat.dart';
 
 class ChatPage extends StatefulWidget {
+  final String id;
+  final String edit;
+
+  // final SignUpBloc _bloc = SignUpBloc();
+
+  ChatPage({Key key, this.id, this.edit}) : super(key: key);
+
   @override
-  _ChatPageState createState() => _ChatPageState();
+  _ChatPageState createState() => _ChatPageState(id);
 }
 
 class _ChatPageState extends State<ChatPage> {
   String _pageController = 'chatPage';
+
+  User _user;
+
+  _ChatPageState(String id) {
+    this._user = User(id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +50,11 @@ class _ChatPageState extends State<ChatPage> {
         child: new Icon(Icons.add),
         backgroundColor: Colors.blue[900],
         onPressed: (){
-          print('adjbisufwsf');
+          // Navigator.push(
+            // context, 
+            // MaterialPageRoute(builder: (context) => AddChat())
+          // );
+          _gotoaddChat();
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
@@ -126,4 +146,8 @@ class _ChatPageState extends State<ChatPage> {
       ],
     ),
   );
+
+  void _gotoaddChat() {
+    Nav.of(context).navigateTo(context, 'addChat', replace: true, clearStack: true);
+  }
 }
