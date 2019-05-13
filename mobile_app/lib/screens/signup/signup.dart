@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:country_pickers/country_pickers.dart';
 // import 'package:Abigo/Screens/chatPage.dart';
-import 'package:Abigo/screens/signup_bloc.dart';
+import 'package:Abigo/screens/signup/signup_bloc.dart';
 import 'package:Abigo/model/user.dart';
 import 'package:Abigo/bloc/bloc_provider.dart';
 import 'package:Abigo/utils/auth.dart';
@@ -225,7 +225,7 @@ class _SignupPageState extends State<SignupPage> {
   
         widget._bloc.signupUser(_user).then((_) {
           setCurrentUser(_user);
-          Nav.of(context).navigateTo(context, "/chatPage", replace: true, clearStack: true);
+          Nav.of(context).navigateTo(context, "/chatlist", replace: true, clearStack: true);
         }).catchError((err) {});
       }
     } else {

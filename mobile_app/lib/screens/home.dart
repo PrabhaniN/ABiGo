@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage>{
             ),
 
             Image(
-              image: AssetImage('images/abigo_logo.png'),
+              image: AssetImage('assets/images/abigo_logo.png'),
               width: 250.0,
             ),
 
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage>{
               children: <Widget>[
                 Image(
                   width: 17.0,
-                  image: AssetImage('images/google.png'),
+                  image: AssetImage('assets/images/google.png'),
                 ),
                 Text(
                   'Sign In',
@@ -119,6 +119,6 @@ class _HomePageState extends State<HomePage>{
   }
 
   void _gotoSignupPage(String id) {
-    Nav.of(context).navigateTo(context, 'signup/$id', clearStack: true, replace: true);
+    Nav.of(context).navigateTo(context, '/signup/$id', clearStack: true, replace: true);
   }
 }

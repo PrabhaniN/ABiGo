@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
-import 'package:Abigo/screens/signup.dart';
-import 'package:Abigo/screens/chats/chatPage.dart';
-import 'package:Abigo/screens/chats/addChat.dart';
+import 'package:Abigo/screens/signup/signup.dart';
+import 'package:Abigo/screens/chatlist/chatList.dart';
+import 'package:Abigo/screens/addchat/addChat.dart';
 
 class Routes {
 
@@ -9,8 +9,12 @@ class Routes {
     return SignupPage(id: params['id'].first);
   });
 
-  static final chatPageHandler =Handler(handlerFunc: (_, Map<String, List<String>> params) {
-    return ChatPage(id: params['id'].first);
+  // static final chatListHandler =Handler(handlerFunc: (_, Map<String, List<String>> params) {
+    // return ChatList(id: params['id'].first);
+  // });
+
+  static final chatListHandler =Handler(handlerFunc: (_, __) {
+    return ChatList();
   });
 
   static final addChatHandler =Handler(handlerFunc: (_, __) {
@@ -19,7 +23,7 @@ class Routes {
 
   static void defineRoutes(Router router) {
     router.define("/signup/:id", handler:signPageHandler);
-    router.define("/chats/:id", handler:chatPageHandler);
-    router.define("/chats/addChat", handler: addChatHandler);
+    router.define("/chatlist", handler:chatListHandler);
+    router.define("/addchat", handler: addChatHandler);
   }
 }

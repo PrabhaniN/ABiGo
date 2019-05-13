@@ -36,7 +36,7 @@ class _SignChatScreenState extends State<SignChatScreen> {
         children: <Widget>[
           AspectRatio(
             aspectRatio: 21.0 / 20.0,
-            child: Image.asset('images/abigo logo.png'),
+            child: Image.asset('assets/images/abigo logo.png'),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),

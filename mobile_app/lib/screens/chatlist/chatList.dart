@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:Abigo/screens/chats/textChatScreen.dart';
-import 'package:Abigo/model/user.dart';
+import 'package:Abigo/screens/chat/chatScreen.dart';
+// import 'package:Abigo/model/user.dart';
 import 'package:Abigo/nav/nav.dart';
 // import 'package:Abigo/Screens/addChat.dart';
 
-class ChatPage extends StatefulWidget {
-  final String id;
-  final String edit;
+class ChatList extends StatefulWidget {
+  // final String id;
+  // final String edit;
 
   // final SignUpBloc _bloc = SignUpBloc();
 
-  ChatPage({Key key, this.id, this.edit}) : super(key: key);
+  // ChatList({Key key, this.id, this.edit}) : super(key: key);
 
   @override
-  _ChatPageState createState() => _ChatPageState(id);
+  _ChatListState createState() => _ChatListState();
+  // _ChatListState createState() => _ChatListState(id);
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatListState extends State<ChatList> {
   String _pageController = 'chatPage';
 
-  User _user;
-
-  _ChatPageState(String id) {
-    this._user = User(id);
-  }
+  // User _user;
+// 
+  // _ChatListState(String id) {
+    // this._user = User(id);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class _ChatPageState extends State<ChatPage> {
     // alignment: const Alignment(10.0, 10.0),
     children: [
       CircleAvatar(
-        backgroundImage: AssetImage('images/panda.jpeg'),
+        backgroundImage: AssetImage('assets/images/panda.jpeg'),
         radius: 40.0, 
       ),
     ],
@@ -111,7 +112,7 @@ class _ChatPageState extends State<ChatPage> {
       children: <Widget>[
         DrawerHeader(
           child: Image(
-            image: AssetImage('images/abigo_logo.png'),
+            image: AssetImage('assets/images/abigo_logo.png'),
           ),
         ),
 
@@ -121,7 +122,7 @@ class _ChatPageState extends State<ChatPage> {
             if (_pageController != 'chatPage') {
               Navigator.push(
               context, 
-              MaterialPageRoute(builder: (context) => ChatPage())
+              MaterialPageRoute(builder: (context) => ChatList())
               );
             } else {
               Navigator.pop(context);
@@ -135,7 +136,7 @@ class _ChatPageState extends State<ChatPage> {
             if (_pageController != 'asdas') {
               Navigator.push(
               context, 
-              MaterialPageRoute(builder: (context) => ChatPage())
+              MaterialPageRoute(builder: (context) => ChatList())
               );
             } else {
               Navigator.pop(context);
@@ -148,6 +149,6 @@ class _ChatPageState extends State<ChatPage> {
   );
 
   void _gotoaddChat() {
-    Nav.of(context).navigateTo(context, 'addChat', replace: true, clearStack: true);
+    Nav.of(context).navigateTo(context, '/addChat', replace: true, clearStack: true);
   }
 }
