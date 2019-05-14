@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:Abigo/screens/chatmessage/chatMessage.dart';
 // import 'package:Abigo/Screens/chats/chatPage.dart';
 import 'package:Abigo/widgets/drawer.dart';
-// import 'theme.dart';
+import 'package:Abigo/utils/theme.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -15,18 +15,14 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   final TextEditingController _textEditingController = new TextEditingController();
   bool _isComposing =false;
   @override
-  // void dispose(){
-    // for (ChatMessage message in _messages)
-      // message.animationController.dispose();
-    // super.dispose();
-  // }
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // leading: _buildStack(),
         title: Text('Samanthi'),
-        backgroundColor: Colors.blue[900],
-        // elevation: Theme.of(context).platform ==TargetPlatform.android ? 4.0 : 0.0,
+        backgroundColor: ThemeColors.primary,
+        elevation: Theme.of(context).platform ==TargetPlatform.android ? 4.0 : 0.0,
       ),
 
       drawer: CustomDrawer(),
@@ -63,19 +59,16 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       ),
     );
   }
-  Widget _buildTextComposer() {
+  Widget _buildTextComposer(){
     return IconTheme(
-      data: IconThemeData(
-        color: Theme.of(context).accentColor
-      ),
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 8.0),
-        // height: 10.0,
+      data: new IconThemeData(color: Theme.of(context).accentColor),
+      child: new Container(
+        margin: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
           children: <Widget>[
             Flexible(
               child: TextField(
-                controller: TextEditingController(),
+                controller: _textEditingController,
                 onChanged: (String text) {
                   setState(() {
                     _isComposing = text.length > 0;
@@ -83,41 +76,36 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                 },
                 onSubmitted: _handleSubmitted,
                 decoration: InputDecoration.collapsed(
-                  hintText: 'Send Message'
+                  hintText: "Send Message"
                 ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 4.0),
-              child: IconButton(
-                icon: Icon(Icons.send),
+            new Container(
+              margin: new EdgeInsets.symmetric(horizontal: 4.0),
+              child: Theme.of(context).platform == TargetPlatform.iOS ?
+              new CupertinoButton(
+                child: new Text("Send"),
+                onPressed: _isComposing
+                  ? () => _handleSubmitted(_textEditingController.text)
+                  : null,
+              ) :
+              new IconButton(
+                color: ThemeColors.primary,
+                icon: new Icon(Icons.send),
                 onPressed: _isComposing
                 ? () => _handleSubmitted(_textEditingController.text)
-                :null,
+                : null,
               ),
-              // child: Theme.of(context).platform == TargetPlatform.iOS
-              // ? new CupertinoButton(
-                // child: Text('Send'),
-                // onPressed: _isComposing
-                // ? () => _handleSubmitted(_textEditingController.text)
-                // : null,
-              // ):
-              // new IconButton(
-                // icon: new Icon(Icons.send),
-                // onPressed: _isComposing
-                // ? () => _handleSubmitted(_textEditingController.text)
-                // : null,
-              // ),
-            ),
+            )
           ],
         ),
-      ),
+      )
     );
   }
-  void _handleSubmitted(String text) {
+  void _handleSubmitted(String text){
     _textEditingController.clear();
     setState(() {
-      _isComposing =false;
+      _isComposing = false;
     });
     ChatMessage message = new ChatMessage(
       text: text,
@@ -130,5 +118,11 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       _messages.insert(0, message);
     });
     message.animationController.forward();
+  }
+
+  void dispose(){
+    for (ChatMessage message in _messages)
+      message.animationController.dispose();
+    super.dispose();
   }
 }

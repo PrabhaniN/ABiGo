@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:Abigo/model/user.dart';
-import 'package:Abigo/nav/nav.dart';
+// import 'package:Abigo/nav/nav.dart';
 import 'package:Abigo/utils/auth.dart';
+import 'package:Abigo/screens/signup/signup.dart';
 
 class HomePage extends StatefulWidget{
   @override
@@ -26,7 +27,8 @@ class _HomePageState extends State<HomePage>{
           setCurrentUser(_user);
         } else {
           // print('New User');
-          _gotoSignupPage(user.uid);
+          // _gotoSignupPage(user.uid);
+          return SignupPage(id: user.uid);
         }
       } else {
         setState(() {
@@ -106,7 +108,8 @@ class _HomePageState extends State<HomePage>{
       final DocumentReference userRef = userCollection.document(user.uid);
       final DocumentSnapshot snapshot = await userRef.get();
       if (!snapshot.exists) {
-        _gotoSignupPage(user.uid);
+        // _gotoSignupPage(user.uid);
+        return SignupPage(id: user.uid);
       } else {
         final User _user =User.fromSnapshot(snapshot);
         setCurrentUser(_user);
@@ -118,7 +121,7 @@ class _HomePageState extends State<HomePage>{
     });
   }
 
-  void _gotoSignupPage(String id) {
-    Nav.of(context).navigateTo(context, '/signup/$id', clearStack: true, replace: true);
-  }
+  // void _gotoSignupPage(String id) {
+    // Nav.of(context).navigateTo(context, '/signup/$id', clearStack: true, replace: true);
+  // }
 }
