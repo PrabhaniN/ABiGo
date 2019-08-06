@@ -14,7 +14,7 @@ final AuthCredential credential = GoogleAuthProvider.getCredential(
   accessToken: googleAuth.accessToken,
   idToken: googleAuth.idToken,
 );
-return _auth.signInWithCredential(credential);
+return (await _auth.signInWithCredential(credential)).user;
 }
 
 Future<Null> signOutWithGoogle() async {
