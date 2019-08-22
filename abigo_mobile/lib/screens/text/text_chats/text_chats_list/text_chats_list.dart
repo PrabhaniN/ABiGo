@@ -49,13 +49,13 @@ class TextChatsListState extends State<TextChatsList> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => TextChatScreen()));
         },
         title: Text(
-          '<<Name>>',
+          'Name',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
           ),
         ),
-        subtitle: Text('<<Sample Text>>'),
+        subtitle: Text('Sample Text'),
         leading: _buildStack(),
         contentPadding: EdgeInsets.fromLTRB(5.0, 6.0, 5.0, 2.0),
       ),

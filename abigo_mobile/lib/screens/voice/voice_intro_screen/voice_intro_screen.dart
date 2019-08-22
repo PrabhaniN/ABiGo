@@ -17,7 +17,7 @@ class VoiceIntroScreenState extends State<VoiceIntroScreen> {
             style: TextStyle(fontSize: 20.0),
           ),
         ),
-        // bottom: ,
+        backgroundColor: Color.fromRGBO(35, 153, 209, 1),
       ),
       body: GridView.count(
         padding: EdgeInsets.all(10.0),

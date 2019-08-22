@@ -20,6 +20,7 @@ class TextIntroScreenState extends State<TextIntroScreen> {
             style: TextStyle(fontSize: 20.0),
           ),
         ),
+        backgroundColor: Color.fromRGBO(35, 153, 209, 1),
         // bottom: ,
       ),
       body: GridView.count(
