@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "968225109562",
+    "firebase_url": "https://abigo-918d4.firebaseio.com",
+    "project_id": "abigo-918d4",
+    "storage_bucket": "abigo-918d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968225109562:android:b6388d2b20462b86",
+        "android_client_info": {
+          "package_name": "com.example.abigo_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968225109562-4m9qm6ri2asv6dneq2fkv04679f9ef2c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abigo_mobile",
+            "certificate_hash": "957dd695deca598b1b6492ceb38497c769275887"
+          }
+        },
+        {
+          "client_id": "968225109562-p2f1to3ajc4ciad1vbnj1a0b8d5a6gou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvAycRkFgmVsus34Bmz5FoLvMVrca5yAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968225109562-p2f1to3ajc4ciad1vbnj1a0b8d5a6gou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
