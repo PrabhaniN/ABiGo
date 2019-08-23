@@ -6,6 +6,7 @@ class Abigo {
     runApp(
       MaterialApp(
         title: 'ABiGo',
+        debugShowCheckedModeBanner: false,
         home: AuthScreen(),
       ),
     );
