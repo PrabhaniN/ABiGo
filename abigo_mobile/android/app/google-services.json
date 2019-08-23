@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "968225109562-nncm7fuc08nrpq9vijpvs6ks0nsabs5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abigo_mobile",
+            "certificate_hash": "2f0f01e1dd13e1931a81497cda484e44522ec6d1"
+          }
+        },
+        {
           "client_id": "968225109562-4m9qm6ri2asv6dneq2fkv04679f9ef2c.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

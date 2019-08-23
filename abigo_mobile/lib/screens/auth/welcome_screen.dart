@@ -1,12 +1,12 @@
+import 'package:abigo_mobile/data/pref.dart';
 import 'package:abigo_mobile/screens/auth/welcome_bloc.dart';
 import 'package:abigo_mobile/screens/auth/welcome_event.dart';
 import 'package:abigo_mobile/screens/auth/welcome_state.dart';
+import 'package:abigo_mobile/screens/intro/intro_screen.dart';
 import 'package:abigo_mobile/screens/text/text_chats/text_chat_screen/text_chat_screen.dart';
 import 'package:abigo_mobile/screens/voice/voice_chat/voice_chat_screen/voice_chat_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:abigo_mobile/screens/voice/voice_intro_screen/voice_intro_screen.dart';
-import 'package:abigo_mobile/screens/text/text_intro_screen/text_intro_screen.dart';
 import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -39,7 +39,8 @@ class AuthScreenState extends State<AuthScreen> {
       stream: _bloc.state,
       builder: (context, AsyncSnapshot<WelcomeState> snapshot) {
         final _state = snapshot.data;
-        print("Change state: ${_state.isLoading}");
+        print(
+            "Change state: isLoading: ${_state.isLoading} isKeyboard: ${_state.isKeyboard} isLoggedIn: ${_state.isLoggedIn}");
         if (_state.isVoice || _state.isKeyboard) {
           WidgetsBinding.instance.addPostFrameCallback(
             (_) => Navigator.pushReplacement(
@@ -48,10 +49,14 @@ class AuthScreenState extends State<AuthScreen> {
                 builder: (context) => _state.isVoice && _state.isLoggedIn
                     ? VoiceChatScreen()
                     : _state.isVoice && !_state.isLoggedIn
-                        ? VoiceIntroScreen()
+                        ? IntroScreen(
+                            method: Pref.INPUT_METHOD_VOICE,
+                          )
                         : _state.isKeyboard && _state.isLoggedIn
                             ? TextChatScreen()
-                            : TextIntroScreen(),
+                            : IntroScreen(
+                                method: Pref.INPUT_METHOD_KEYBOARD,
+                              ),
               ),
             ),
           );
