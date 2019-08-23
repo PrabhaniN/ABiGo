@@ -21,9 +21,11 @@ class WelcomeState {
 
   WelcomeState.isVoice(WelcomeState oldState)
       : isVoice = true,
-        isLoading = oldState.isLoading;
+        isLoading = oldState.isLoading,
+        isLoggedIn = oldState.isLoggedIn;
 
   WelcomeState.isKeyboard(WelcomeState oldState)
       : isKeyboard = true,
-        isLoading = oldState.isLoading;
+        isLoading = oldState.isLoading,
+        isLoggedIn = oldState.isLoggedIn;
 }
