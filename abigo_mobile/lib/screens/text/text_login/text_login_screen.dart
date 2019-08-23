@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:abigo_mobile/screens/text/text_chats/text_chats_list/text_chats_list.dart';
+import 'package:abigo_mobile/screens/text/text_guide_screen/text_guide_screen.dart';
 
 class TextLoginScreen extends StatefulWidget {
   @override
@@ -63,7 +63,7 @@ class TextLoginScreenState extends State<TextLoginScreen> {
               ),
               onPressed: (){
                 // _submit();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TextChatsList()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => TextGuideScreen()));
               },
             ),
           )

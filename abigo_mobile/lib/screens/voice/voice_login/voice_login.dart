@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:abigo_mobile/screens/voice/voice_chat/voice_chat_list/voice_chat_list.dart';
+import 'package:abigo_mobile/screens/voice/voice_guide_screen/voice_guide_screen.dart';
 
 class VoiceLoginScreen extends StatefulWidget {
   @override
@@ -72,7 +72,7 @@ class VoiceLoginScreenState extends State<VoiceLoginScreen> {
               ),
               onPressed: (){
                 // _submit();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => VoiceChatList()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => VoiceGuideScreen()));
               },
             ),
           )
