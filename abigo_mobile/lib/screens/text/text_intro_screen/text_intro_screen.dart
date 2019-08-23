@@ -21,7 +21,6 @@ class TextIntroScreenState extends State<TextIntroScreen> {
           ),
         ),
         backgroundColor: Color.fromRGBO(35, 153, 209, 1),
-        // bottom: ,
       ),
       body: GridView.count(
         padding: EdgeInsets.all(10.0),
@@ -35,23 +34,34 @@ class TextIntroScreenState extends State<TextIntroScreen> {
                   padding: EdgeInsets.only(top: 20.0, left: 20.0),
                 ),
                 ListTile(
+                  title: Text('Communication'),
                   leading: Image.asset(
                     'assets/images/voice-to-text.png',
                     // width: 200.0,
                   ),
-                  title: Text('Communication'),
-                  onTap: () {
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(builder: (context) => TextLoginScreen())
-                    );
-                  },
                 )
               ],
             ),
           ),
         ],
-      )
+      ),
+      floatingActionButton: new FloatingActionButton.extended(
+        label: Text(
+          'Next',
+          style: TextStyle(
+            fontSize: 20.0
+          ),
+        ),
+        icon: Icon(Icons.navigate_next, size: 30.0,),
+        onPressed: () {
+          Navigator.push(
+            context, 
+            MaterialPageRoute(builder: (context) => TextLoginScreen())
+          );
+        },
+        backgroundColor: Color.fromRGBO(35, 153, 209, 1),
+      ), 
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
