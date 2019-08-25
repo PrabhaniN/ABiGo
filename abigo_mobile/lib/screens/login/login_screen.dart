@@ -50,11 +50,20 @@ class LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: EdgeInsets.only(top: 200.0),
               ),
-              RaisedButton(
-                child: Text("Google"),
-                onPressed: () {
-                  _bloc.dispatch(SignInWithGoogle());
-                },
+              ListTile(
+                title: OutlineButton.icon(
+                  padding: EdgeInsets.all(10.0),
+                  label: const Text(
+                    'Google',
+                    style: TextStyle(fontSize: 20.0, color: Colors.black87),
+                  ),
+                  icon: Image.asset('assets/images/google.png', height: 20.0,),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+                  borderSide: BorderSide(color: Color.fromRGBO(35, 153, 209, 1), width: 1.5),
+                  onPressed: () {
+                    _bloc.dispatch(SignInWithGoogle());
+                  },
+                ),
               ),
               SizedBox(
                 height: 16,
@@ -89,18 +98,21 @@ class LoginScreenState extends State<LoginScreen> {
               ),
               ListTile(
                 contentPadding: EdgeInsets.fromLTRB(15, 30, 15, 15),
-                title: RaisedButton(
+                title: OutlineButton(
+                  padding: EdgeInsets.all(10.0),
                   color: Color.fromRGBO(35, 153, 209, 1),
                   child: Text(
                     'Login',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17.0,
+                      // color: Colors.white,
+                      fontSize: 25.0,
                     ),
                   ),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+                  borderSide: BorderSide(color: Color.fromRGBO(35, 153, 209, 1), width: 2.5),
                   onPressed: _submit,
                 ),
-              )
+              ),
             ],
           );
         },

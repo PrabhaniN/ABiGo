@@ -50,6 +50,7 @@ flutter:
    - assets/images/abigo_logo.png
    - assets/images/speech-recognition-icon.png
    - assets/images/voice-to-text.png
+   - assets/images/google.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
