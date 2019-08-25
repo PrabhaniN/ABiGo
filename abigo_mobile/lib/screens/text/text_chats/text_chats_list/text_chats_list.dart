@@ -11,18 +11,55 @@ class TextChatsListState extends State<TextChatsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ABiGo'),
-        backgroundColor: Color.fromRGBO(35, 153, 209, 1),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
+      // appBar: AppBar(
+      //   title: Text('ABiGo'),
+      //   backgroundColor: Color.fromRGBO(35, 153, 209, 1),
+      //   actions: <Widget>[
+      //     IconButton(
+      //       icon: Icon(Icons.search),
+      //       onPressed: () {},
+      //     ),
+      //   ],
+      // ),
+      // body: ListView(
+      //   children: _buildListCards(10),
+      // ),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            floating: false,
+            expandedHeight: 250.0,
+            backgroundColor: Color.fromRGBO(35, 153, 209, 1),
+            pinned: false,
+            actions: <Widget>[
+              Icon(Icons.search, size: 30.0,),
+              Padding(padding: EdgeInsets.only(left: 5.0),),
+              Icon(Icons.more_vert, size: 30.0,)
+            ],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Padding(
+                padding: const EdgeInsets.only(left: 0, bottom: 25.0),
+                child: Text(
+                  'ABIGo',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25.0,
+                  )
+                ),
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Card(
+                  child: _buildCard(),
+                );
+              },
+              childCount: 10
+            ),
           ),
         ],
-      ),
-      body: ListView(
-        children: _buildListCards(10),
       ),
       floatingActionButton: new FloatingActionButton(
         child: Icon(Icons.add),
@@ -62,13 +99,13 @@ class TextChatsListState extends State<TextChatsList> {
     ),
   );
 
-  List<Card> _buildListCards(int count){
-    List<Card> card =List.generate(
-      count, 
-      (int index) => Card(
-        child: _buildCard(),
-      )
-    );
-    return card;
-  }
+  // List<Card> _buildListCards(int count){
+    // List<Card> card =List.generate(
+      // count, 
+      // (int index) => Card(
+        // child: _buildCard(),
+      // )
+    // );
+    // return card;
+  // }
 }
