@@ -110,7 +110,7 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
                   borderSide: BorderSide(color: Color.fromRGBO(35, 153, 209, 1), width: 2.5),
-                  onPressed: _submit,
+                  onPressed: _submit, //TODO navigate to guide screen 
                 ),
               ),
             ],
