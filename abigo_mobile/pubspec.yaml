@@ -28,6 +28,8 @@ dependencies:
   bloc: ^0.15.0
   shared_preferences: ^0.5.3+4
   cupertino_icons: ^0.1.2
+  speech_recognition: ^0.3.0
+  flutter_tts: ^0.5.2
 
 dev_dependencies:
   flutter_test:
