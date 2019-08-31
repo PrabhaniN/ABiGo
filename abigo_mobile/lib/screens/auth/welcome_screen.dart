@@ -1,13 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:abigo_mobile/data/pref.dart';
 import 'package:abigo_mobile/screens/auth/welcome_bloc.dart';
 import 'package:abigo_mobile/screens/auth/welcome_event.dart';
 import 'package:abigo_mobile/screens/auth/welcome_state.dart';
 import 'package:abigo_mobile/screens/intro/intro_screen.dart';
-import 'package:abigo_mobile/screens/text/text_chats/text_chat_screen/text_chat_screen.dart';
-import 'package:abigo_mobile/screens/voice/voice_chat/voice_chat_screen/voice_chat_screen.dart';
-import 'package:flutter/material.dart';
-
-import 'package:provider/provider.dart';
+import 'package:abigo_mobile/screens/live_talk/live_talk_screen.dart';
+import 'package:abigo_mobile/screens/live_text/live_text_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -47,13 +47,13 @@ class AuthScreenState extends State<AuthScreen> {
               context,
               MaterialPageRoute(
                 builder: (context) => _state.isVoice && _state.isLoggedIn
-                    ? VoiceChatScreen()
+                    ? LiveTalkScreen()
                     : _state.isVoice && !_state.isLoggedIn
                         ? IntroScreen(
                             method: Pref.INPUT_METHOD_VOICE,
                           )
                         : _state.isKeyboard && _state.isLoggedIn
-                            ? TextChatScreen()
+                            ? LiveTextScreen()
                             : IntroScreen(
                                 method: Pref.INPUT_METHOD_KEYBOARD,
                               ),
