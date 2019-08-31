@@ -1,8 +1,15 @@
+import 'package:abigo_mobile/data/pref.dart';
+import 'package:abigo_mobile/screens/live_text/live_text_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:abigo_mobile/screens/text/text_chats/text_chats_list/text_chats_list.dart';
+import 'package:abigo_mobile/screens/live_talk/live_talk_screen.dart';
 
-class TextGuideScreen extends StatelessWidget {
+class TextGuideScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => TextGuideScreenState();
+}
+
+class TextGuideScreenState extends State<TextGuideScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,9 +114,9 @@ class TextGuideScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
             context, 
-            MaterialPageRoute(builder: (context) => TextChatsList())
+            MaterialPageRoute(builder: (context) =>LiveTextScreen()),
           );
         },
         label: Text(

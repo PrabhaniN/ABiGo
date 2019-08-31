@@ -1,12 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:abigo_mobile/data/pref.dart';
+import 'package:abigo_mobile/screens/guide/voice_guide_screen.dart';
+import 'package:abigo_mobile/screens/guide/text_guide_screen.dart';
 import 'package:abigo_mobile/screens/login/login_bloc.dart';
 import 'package:abigo_mobile/screens/login/login_event.dart';
 import 'package:abigo_mobile/screens/login/login_state.dart';
-import 'package:abigo_mobile/screens/text/text_chats/text_chat_screen/text_chat_screen.dart';
-import 'package:abigo_mobile/screens/voice/voice_chat/voice_chat_screen/voice_chat_screen.dart';
-import 'package:flutter/material.dart';
-
-import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   final String method;
@@ -38,8 +38,8 @@ class LoginScreenState extends State<LoginScreen> {
                 MaterialPageRoute(
                   builder: (context) =>
                       widget.method == Pref.INPUT_METHOD_KEYBOARD
-                          ? TextChatScreen()
-                          : VoiceChatScreen(),
+                          ? TextGuideScreen()
+                          : VoiceGuideScreen(),
                 ),
               ),
             );
