@@ -34,6 +34,13 @@ class TextChatsListState extends State<TextChatsList> {
             actions: <Widget>[
               Icon(Icons.search, size: 30.0,),
               Padding(padding: EdgeInsets.only(left: 5.0),),
+              IconButton(
+                icon: Icon(Icons.mic),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                iconSize: 30.0,
+              ),
               Icon(Icons.more_vert, size: 30.0,)
             ],
             flexibleSpace: FlexibleSpaceBar(
