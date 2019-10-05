@@ -14,7 +14,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginState.signingIn;
       yield await event.execute();
     } catch (e) {
-      yield LoginState.error;
+      yield currentState;
     }
   }
 }

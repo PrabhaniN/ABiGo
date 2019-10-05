@@ -59,20 +59,19 @@ class LoginScreenState extends State<LoginScreen> {
           Spacer(),
           ListTile(
             title: OutlineButton.icon(
-              padding: EdgeInsets.all(10.0),
-              label: const Text(
-                'Google',
-                style: TextStyle(fontSize: 20.0, color: Colors.black87),
-              ),
-              icon: Icon(FontAwesomeIcons.google),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)),
-              borderSide: BorderSide(
-                  color: Color.fromRGBO(35, 153, 209, 1), width: 1.5),
-              onPressed: () {
-                _bloc.dispatch(SignInWithGoogle());
-              },
-            ),
+                padding: EdgeInsets.all(10.0),
+                label: const Text(
+                  'Google',
+                  style: TextStyle(fontSize: 20.0, color: Colors.black87),
+                ),
+                icon: Icon(FontAwesomeIcons.google),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(35, 153, 209, 1), width: 1.5),
+                onPressed: () => _bloc.currentState == LoginState.signingIn
+                    ? null
+                    : _bloc.dispatch(SignInWithGoogle())),
           ),
           SizedBox(
             height: 16,
@@ -121,7 +120,9 @@ class LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(30.0)),
               borderSide: BorderSide(
                   color: Color.fromRGBO(35, 153, 209, 1), width: 2.5),
-              onPressed: _submit, //TODO navigate to guide screen
+              onPressed: _bloc.currentState == LoginState.signingIn
+                  ? null
+                  : _submit, //TODO navigate to guide screen
             ),
           ),
         ],

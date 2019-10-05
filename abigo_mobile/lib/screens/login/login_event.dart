@@ -16,20 +16,35 @@ class VerifyPhone extends LoginEvent {
   Future<LoginState> execute() async {
     LoginState state = LoginState.signingIn;
     try {
+      // TODO complete phone auth
+      // await FirebaseAuth.instance.signinpho
       await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: this.phoneNumber,
         timeout: Duration(seconds: 120),
         codeAutoRetrievalTimeout: (msg, [index]) {},
-        codeSent: (code, [index]) {},
-        verificationCompleted: (credential) {
-          state = LoginState.success;
+        codeSent: (code, [index]) {
+          print(code);
+          print("code");
+        },
+        verificationCompleted: (credential) async {
+          final FirebaseUser user =
+              (await FirebaseAuth.instance.signInWithCredential(credential))
+                  .user;
+          print("signed in " + user.phoneNumber);
+          return LoginState.success;
         },
         verificationFailed: (exception) {
+          print(exception.message);
+          print("exception");
           state = LoginState.error;
         },
       );
-      return state;
-    } catch (e) {
+      print("state");
+      print(state);
+      return LoginState.initialState;
+    } catch (e, _) {
+      print(e);
+      print(_);
       return LoginState.error;
     }
   }
