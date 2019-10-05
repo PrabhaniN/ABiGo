@@ -11,16 +11,16 @@ class Repository {
   Future<bool> isLoggedIn() => _auth.currentUser().then((user) => user != null);
 
   // User Prefrences
-  Future setInputMethod(String method) {
+  Future<bool> setInputMethod(String method) {
     return _pref.then((pref) {
-      pref.setString(Pref.PREF_USER_INPUT_METHOD, method);
+      return pref.setString(Pref.PREF_USER_INPUT_METHOD, method);
     });
   }
 
   Future<String> getInputMethod() {
-    return _pref.then((pref) {
-      return pref.getString(Pref.PREF_USER_INPUT_METHOD);
-    });
+    return _pref
+        .then((pref) => pref.getString(Pref.PREF_USER_INPUT_METHOD))
+        .catchError((e) => null);
   }
 
   // Singleton
