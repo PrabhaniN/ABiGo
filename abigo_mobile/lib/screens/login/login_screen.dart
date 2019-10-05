@@ -130,6 +130,7 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void _submit() {
-    _bloc.dispatch(VerifyPhone(_nameController.text, _phoneNoController.text));
+    _bloc.dispatch(VerifyPhone(
+        name: _nameController.text, phoneNumber: _phoneNoController.text));
   }
 }

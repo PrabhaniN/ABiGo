@@ -10,12 +10,28 @@ class VerifyPhone extends LoginEvent {
   final String name;
   final String phoneNumber;
 
-  VerifyPhone(this.name, this.phoneNumber);
+  VerifyPhone({this.name, this.phoneNumber});
 
   @override
-  Future<LoginState> execute() {
-    // TODO: implement execute
-    return null;
+  Future<LoginState> execute() async {
+    LoginState state = LoginState.signingIn;
+    try {
+      await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: this.phoneNumber,
+        timeout: Duration(seconds: 120),
+        codeAutoRetrievalTimeout: (msg, [index]) {},
+        codeSent: (code, [index]) {},
+        verificationCompleted: (credential) {
+          state = LoginState.success;
+        },
+        verificationFailed: (exception) {
+          state = LoginState.error;
+        },
+      );
+      return state;
+    } catch (e) {
+      return LoginState.error;
+    }
   }
 }
 
@@ -34,7 +50,7 @@ class SignInWithGoogle extends LoginEvent {
           (await FirebaseAuth.instance.signInWithCredential(credential)).user;
       print("signed in " + user.displayName);
       return LoginState.success;
-    } catch (e,_) {
+    } catch (e, _) {
       print(e);
       print(_);
       return LoginState.error;

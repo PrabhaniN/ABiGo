@@ -18,19 +18,3 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 }
-
-// if (event is VerifyPhone) {
-//       yield LoginState.loading();
-//       _auth.verifyPhoneNumber(
-//         phoneNumber: event.phoneNumber,
-//         timeout: Duration(seconds: 120),
-//         codeAutoRetrievalTimeout: (msg, [index]) {},
-//         codeSent: (code, [index]) {},
-//         verificationCompleted: (credential) async* {
-//           yield LoginState.success();
-//         },
-//         verificationFailed: (exception) async* {
-//           print(exception.message);
-//           yield LoginState.error(exception.message);
-//         },
-//       );
