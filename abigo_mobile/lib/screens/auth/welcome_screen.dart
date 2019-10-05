@@ -21,7 +21,7 @@ class AuthScreenState extends State<AuthScreen> {
         body: Center(
       child: Column(children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(top: 250.0),
+          padding: EdgeInsets.only(top: 240.0),
         ),
         Image.asset(
           'assets/images/abigo_logo.png',
