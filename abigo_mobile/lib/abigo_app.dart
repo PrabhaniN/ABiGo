@@ -1,4 +1,4 @@
-import 'package:abigo_mobile/screens/auth/welcome_screen.dart';
+import 'package:abigo_mobile/screens/welcome/welcome_screen.dart';
 import 'package:abigo_mobile/screens/intro/intro_screen.dart';
 import 'package:abigo_mobile/screens/live_talk/live_talk_screen.dart';
 import 'package:abigo_mobile/screens/live_text/live_text_screen.dart';
