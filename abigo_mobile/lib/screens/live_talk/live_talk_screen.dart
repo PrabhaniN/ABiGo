@@ -1,7 +1,9 @@
+import 'package:abigo_mobile/screens/live/tts_state.dart/tts_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 
-import 'package:abigo_mobile/screens/live_text/live_text_screen.dart';
+import 'package:abigo_mobile/screens/live/live_screen.dart';
 import 'package:abigo_mobile/screens/voice/voice_chat/voice_chat_list/voice_chat_list.dart';
 
 class LiveTalkScreen extends StatefulWidget {
@@ -69,6 +71,7 @@ class LiveTalkScreenState extends State<LiveTalkScreen> {
                   padding: EdgeInsets.all(20.0),
                 ),
                 FloatingActionButton(
+                  heroTag: 4,
                   child: Icon(Icons.cancel),
                   mini: true,
                   backgroundColor: Color.fromRGBO(35, 153, 209, 0.8),
@@ -83,6 +86,7 @@ class LiveTalkScreenState extends State<LiveTalkScreen> {
                   },
                 ),
                 FloatingActionButton(
+                  heroTag: 3,
                   child: Icon(Icons.mic),
                   onPressed: () {
                     if (_isAvailable && !_isListening)
@@ -93,6 +97,7 @@ class LiveTalkScreenState extends State<LiveTalkScreen> {
                   backgroundColor: Color.fromRGBO(35, 153, 209, 1),
                 ),
                 FloatingActionButton(
+                  heroTag: 2,
                   child: Icon(Icons.stop),
                   mini: true,
                   backgroundColor: Color.fromRGBO(35, 153, 209, 1),
@@ -123,22 +128,32 @@ class LiveTalkScreenState extends State<LiveTalkScreen> {
                 style: TextStyle(fontSize: 24.0),
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 50.0),),
+            Padding(
+              padding: EdgeInsets.only(top: 50.0),
+            ),
             RaisedButton.icon(
               color: Color.fromRGBO(35, 153, 209, 1),
               label: Text(
                 'Text',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white
-                ),
+                style: TextStyle(fontSize: 20.0, color: Colors.white),
               ),
-              icon: Icon(Icons.text_fields, color: Colors.white, size: 30.0,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+              icon: Icon(
+                Icons.text_fields,
+                color: Colors.white,
+                size: 30.0,
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0)),
               onPressed: () {
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => LiveTextScreen())
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ChangeNotifierProvider<TtsState>.value(
+                      value: TtsState(),
+                      child: LiveScreen(),
+                    ),
+                  ),
                 );
               },
             )
@@ -146,6 +161,7 @@ class LiveTalkScreenState extends State<LiveTalkScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: 1,
         label: Text('Chats'),
         icon: Icon(Icons.message),
         onPressed: () {

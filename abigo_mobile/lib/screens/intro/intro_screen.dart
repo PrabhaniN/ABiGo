@@ -4,27 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class IntroScreen extends StatefulWidget {
-  final String method;
-
-  IntroScreen({@required this.method});
-
   @override
   State<StatefulWidget> createState() => IntroScreenState();
 }
 
 class IntroScreenState extends State<IntroScreen> {
-  bool voiceInput = false;
-  bool textInput = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            'What you can do?',
-            style: TextStyle(fontSize: 20.0),
-          ),
+        centerTitle: true,
+        title: Text(
+          'What you can do?',
+          style: TextStyle(fontSize: 20.0),
         ),
         backgroundColor: Color.fromRGBO(35, 153, 209, 1),
         // bottom: ,
@@ -57,11 +49,12 @@ class IntroScreenState extends State<IntroScreen> {
         onPressed: _gotoLoginScreen,
         label: Text(
           'Next',
-          style: TextStyle(
-            fontSize: 20.0
-          ),
+          style: TextStyle(fontSize: 20.0),
         ),
-        icon: Icon(Icons.navigate_next, size: 30.0,),
+        icon: Icon(
+          Icons.navigate_next,
+          size: 30.0,
+        ),
         backgroundColor: Color.fromRGBO(35, 153, 209, 1),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
@@ -75,7 +68,7 @@ class IntroScreenState extends State<IntroScreen> {
         builder: (context) => Provider<LoginBloc>(
           builder: (context) => LoginBloc(),
           dispose: (context, bloc) => bloc.dispose(),
-          child: LoginScreen(method: widget.method),
+          child: LoginScreen(),
         ),
       ),
     );

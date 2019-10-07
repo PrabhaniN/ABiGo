@@ -1,17 +1,14 @@
 import 'package:abigo_mobile/data/pref.dart';
 import 'package:abigo_mobile/screens/guide/text_guide_screen.dart';
 import 'package:abigo_mobile/screens/guide/voice_guide_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:abigo_mobile/state/input_method_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:abigo_mobile/screens/login/bloc.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
-  final String method;
-
-  LoginScreen({@required this.method});
-
   @override
   State<StatefulWidget> createState() => LoginScreenState();
 }
@@ -23,14 +20,25 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth.instance.currentUser().then((user) {
-      print(user.toString());
-    });
+    InputMethodState inputMethodState = Provider.of<InputMethodState>(context);
     return Scaffold(
       body: Column(
         children: <Widget>[
           BlocListener(
             bloc: _bloc,
+            listener: (context, state) {
+              if (state == LoginState.success) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => inputMethodState.inputMethod ==
+                            Pref.INPUT_METHOD_KEYBOARD
+                        ? TextGuideScreen()
+                        : VoiceGuideScreen(),
+                  ),
+                );
+              }
+            },
             child: Container(
               margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
               child: BlocBuilder<LoginBloc, LoginState>(
@@ -42,19 +50,6 @@ class LoginScreenState extends State<LoginScreen> {
                 },
               ),
             ),
-            listener: (context, state) {
-              if (state == LoginState.success) {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        widget.method == Pref.INPUT_METHOD_KEYBOARD
-                            ? TextGuideScreen()
-                            : VoiceGuideScreen(),
-                  ),
-                );
-              }
-            },
           ),
           Spacer(),
           ListTile(
