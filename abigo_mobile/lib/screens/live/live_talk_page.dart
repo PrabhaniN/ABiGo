@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 
-import 'package:abigo_mobile/screens/live/live_screen.dart';
 import 'package:abigo_mobile/screens/voice/voice_chat/voice_chat_list/voice_chat_list.dart';
 
-class LiveTalkScreen extends StatefulWidget {
+class LiveTalkPage extends StatefulWidget {
   // final String method;
 
-  // const LiveTalkScreen({@required this.method});
+  // const LiveTalkPage({@required this.method});
 
   @override
-  State<StatefulWidget> createState() => LiveTalkScreenState();
+  State<StatefulWidget> createState() => LiveTalkPageState();
 }
 
-class LiveTalkScreenState extends State<LiveTalkScreen> {
+class LiveTalkPageState extends State<LiveTalkPage> {
+  TtsState _ttsState;
+  bool _isInstructionRead = false;
   SpeechRecognition _speechRecognition;
   bool _isAvailable = false;
   bool _isListening = false;
-
   String resultText = "";
 
   @override
@@ -52,13 +52,17 @@ class LiveTalkScreenState extends State<LiveTalkScreen> {
         );
   }
 
+  void _readIstructionsOnce() {
+    if (_isInstructionRead) return;
+    _ttsState.speak("I'm on Speak page");
+    _isInstructionRead = true;
+  }
+
   @override
   Widget build(BuildContext context) {
+    _ttsState = Provider.of<TtsState>(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _readIstructionsOnce());
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Meet and Talk'),
-        backgroundColor: Color.fromRGBO(35, 153, 209, 1),
-      ),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -144,18 +148,7 @@ class LiveTalkScreenState extends State<LiveTalkScreen> {
               ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0)),
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        ChangeNotifierProvider<TtsState>.value(
-                      value: TtsState(),
-                      child: LiveScreen(),
-                    ),
-                  ),
-                );
-              },
+              onPressed: () {},
             )
           ],
         ),
@@ -174,5 +167,11 @@ class LiveTalkScreenState extends State<LiveTalkScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
+  }
+
+  @override
+  void dispose() {
+    _ttsState.stop();
+    super.dispose();
   }
 }
