@@ -17,58 +17,77 @@ class LiveTextScreenState extends State<LiveTextScreen> {
   Widget build(BuildContext context) {
     _ttsState = Provider.of<TtsState>(context);
     return Scaffold(
-      body: Column(
-        children: [
-          TextField(
-            controller: _textEditingController,
-            decoration: InputDecoration(
-              suffixIcon: IconButton(
-                  icon: Icon(Icons.close),
-                  onPressed: () {
-                    WidgetsBinding.instance.addPostFrameCallback(
-                        (_) => _textEditingController.clear());
-                  }),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Say what you want!'),
+        backgroundColor: Color.fromRGBO(35, 153, 209, 1),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            TextField(
+              controller: _textEditingController,
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      WidgetsBinding.instance.addPostFrameCallback(
+                          (_) => _textEditingController.clear());
+                    }),
+              ),
             ),
-          ),
-          IconButton(
-            iconSize: 50,
-            splashColor: Color.fromRGBO(35, 153, 209, 1),
-            icon: Icon(
-              _ttsState.isPlaying
-                  ? FontAwesomeIcons.stop
-                  : FontAwesomeIcons.play,
-              color: Color.fromRGBO(35, 153, 209, 1),
+            IconButton(
+              iconSize: 50,
+              splashColor: Color.fromRGBO(35, 153, 209, 1),
+              icon: Icon(
+                _ttsState.isPlaying
+                    ? FontAwesomeIcons.stop
+                    : FontAwesomeIcons.play,
+                color: Color.fromRGBO(35, 153, 209, 1),
+              ),
+              onPressed: () => _handleOnPressed(_textEditingController.text),
             ),
-            onPressed: () => _handleOnPressed(_textEditingController.text),
-          ),
-          Text(
-            _ttsState.isPlaying ? "Stop" : "Play",
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w800,
-              color: Color.fromRGBO(35, 153, 209, 1),
+            Text(
+              _ttsState.isPlaying ? "Stop" : "Play",
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w800,
+                color: Color.fromRGBO(35, 153, 209, 1),
+              ),
             ),
-          ),
-          Expanded(
-            child: ListView(
-              shrinkWrap: true,
-              children: _previous
-                  .map(
-                    (t) => ListTile(
-                      leading: Icon(Icons.mic),
-                      title: Text(t),
-                      trailing: IconButton(
-                        icon: Icon(Icons.replay),
-                        onPressed: () {
-                          _handleOnPressed(t);
-                        },
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                children: _previous
+                    .map(
+                      (t) => ListTile(
+                        leading: Icon(Icons.mic),
+                        title: Text(t),
+                        trailing: IconButton(
+                          icon: Icon(Icons.replay),
+                          onPressed: () {
+                            _handleOnPressed(t);
+                          },
+                        ),
                       ),
-                    ),
-                  )
-                  .toList(),
+                    )
+                    .toList(),
+              ),
             ),
-          ),
-        ],
+            Row(
+              children: <Widget>[
+                // Spacer(),
+              ],
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        heroTag: "right",
+        child: Icon(Icons.message),
+        onPressed: () {},
+        backgroundColor: Color.fromRGBO(35, 153, 209, 1),
       ),
     );
   }

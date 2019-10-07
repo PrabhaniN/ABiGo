@@ -29,7 +29,7 @@ dependencies:
   flutter_bloc:
   shared_preferences: ^0.5.3+4
   cupertino_icons: ^0.1.2
-  speech_recognition: ^0.3.0
+  speech_recognition:
   flutter_tts: ^0.5.2
   font_awesome_flutter:
 
