@@ -7,25 +7,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(
-      MaterialApp(
-        title: 'ABiGo',
-        debugShowCheckedModeBanner: false,
-        home: MultiProvider(
-          providers: [
-            StreamProvider<FirebaseUser>.value(
-              value: FirebaseAuth.instance.currentUser().asStream(),
-            ),
-            ChangeNotifierProvider<InputMethodState>.value(
-              value: InputMethodState(),
-            ),
-            ChangeNotifierProvider<TtsState>.value(
-              value: TtsState(),
-            ),
-            ChangeNotifierProvider<SpeechRecognitionState>.value(
-              value: SpeechRecognitionState(),
-            ),
-          ],
-          child: AbigoApp(),
+      MultiProvider(
+        providers: [
+          StreamProvider<FirebaseUser>.value(
+            value: FirebaseAuth.instance.currentUser().asStream(),
+          ),
+          ChangeNotifierProvider<InputMethodState>.value(
+            value: InputMethodState(),
+          ),
+          ChangeNotifierProvider<TtsState>.value(
+            value: TtsState(),
+          ),
+          ChangeNotifierProvider<SpeechRecognitionState>.value(
+            value: SpeechRecognitionState(),
+          ),
+        ],
+        child: MaterialApp(
+          title: 'ABiGo',
+          debugShowCheckedModeBanner: false,
+          home: AbigoApp(),
         ),
       ),
     );
