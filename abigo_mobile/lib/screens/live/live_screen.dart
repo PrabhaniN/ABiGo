@@ -5,27 +5,33 @@ import 'package:flutter/material.dart';
 import 'package:abigo_mobile/screens/live/live_talk_page.dart';
 
 class LiveScreen extends StatefulWidget {
+  final String method;
+  LiveScreen({@required this.method});
+
   @override
   State<StatefulWidget> createState() => LiveScreenState();
 }
 
 class LiveScreenState extends State<LiveScreen> {
   PageController _pageController;
-  final _pages = [
-    LiveTextScreen(),
-    LiveTalkPage(),
-  ];
+  final List<Widget> _pages = [];
 
   int _currentPage = 0;
 
   @override
   void initState() {
     _pageController = PageController();
-    Repository().getInputMethod().then((method) {
-      if (method == Pref.INPUT_METHOD_VOICE)
-        _pageController.animateToPage(1,
-            duration: Duration(milliseconds: 300), curve: Curves.ease);
-    });
+    if (widget.method == Pref.INPUT_METHOD_VOICE)
+      _pages.addAll([
+        LiveTalkPage(),
+        LiveTextScreen(),
+      ]);
+    else
+      _pages.addAll([
+        LiveTextScreen(),
+        LiveTalkPage(),
+      ]);
+
     super.initState();
   }
 

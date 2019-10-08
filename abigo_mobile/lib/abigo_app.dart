@@ -18,7 +18,7 @@ class AbigoApp extends StatelessWidget {
         return IntroScreen();
       }
     } else {
-      return LiveScreen();
+      return LiveScreen(method: inputMethodState.inputMethod);
     }
   }
 }
