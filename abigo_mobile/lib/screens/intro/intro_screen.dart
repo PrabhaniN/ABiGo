@@ -3,31 +3,17 @@ import 'package:abigo_mobile/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class IntroScreen extends StatefulWidget {
-  final String method;
-
-  IntroScreen({@required this.method});
-
-  @override
-  State<StatefulWidget> createState() => IntroScreenState();
-}
-
-class IntroScreenState extends State<IntroScreen> {
-  bool voiceInput = false;
-  bool textInput = true;
-
+class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            'What you can do?',
-            style: TextStyle(fontSize: 20.0),
-          ),
+        centerTitle: true,
+        title: Text(
+          'What you can do?',
+          style: TextStyle(fontSize: 20.0),
         ),
         backgroundColor: Color.fromRGBO(35, 153, 209, 1),
-        // bottom: ,
       ),
       body: GridView.count(
         padding: EdgeInsets.all(10.0),
@@ -46,7 +32,7 @@ class IntroScreenState extends State<IntroScreen> {
                     // width: 200.0,
                   ),
                   title: Text('Communication'),
-                  onTap: _gotoLoginScreen,
+                  onTap: () => _gotoLoginScreen(context),
                 )
               ],
             ),
@@ -54,28 +40,28 @@ class IntroScreenState extends State<IntroScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _gotoLoginScreen,
+        onPressed: () => _gotoLoginScreen(context),
         label: Text(
           'Next',
-          style: TextStyle(
-            fontSize: 20.0
-          ),
+          style: TextStyle(fontSize: 20.0),
         ),
-        icon: Icon(Icons.navigate_next, size: 30.0,),
+        icon: Icon(
+          Icons.navigate_next,
+          size: 30.0,
+        ),
         backgroundColor: Color.fromRGBO(35, 153, 209, 1),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
-  void _gotoLoginScreen() {
+  void _gotoLoginScreen(context) {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => Provider<LoginBloc>(
-          builder: (context) => LoginBloc(),
-          dispose: (context, bloc) => bloc.dispose(),
-          child: LoginScreen(method: widget.method),
+        builder: (context) => Provider<LoginBloc>.value(
+          value: LoginBloc(),
+          child: LoginScreen(),
         ),
       ),
     );
